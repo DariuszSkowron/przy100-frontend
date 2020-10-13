@@ -1,0 +1,41 @@
+
+<div class="row">
+  <div class="container">
+    <h2 class="header">Completed!</h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="../../assets/img/Sentino%20meme.png" style="width: 250px;height : 250px;" alt="sentino">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h3>{{this.correctAnswerCount}}/2</h3>
+          <span>Congratulations, you have completed the quiz just in : {{this.quizService.totalTime}}</span>
+        </div>
+        <div class="card-content">
+          <form #registerForm="ngForm" (ngSubmit)="onSubmit(Name.value)">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="Name" #Name ngModel required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button type="submit" class="btn" onclick="M.toast({html: 'Score sent'})" [disabled]="!registerForm.valid || this.isDisabled">Submit score</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="quizRepeat()">
+        <i class="material-icons">replay</i>
+      </a>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var displayCustomHTMLToast = function () {
+    var toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Undo</button>';
+    M.toast({html: toastHTML});
+  }
+</script>

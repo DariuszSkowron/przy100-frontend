@@ -1,0 +1,23 @@
+<table>
+  <thead>
+  <tr class="test">
+    <th>Position</th>
+    <th>Nickname</th>
+    <th>CorrectAnswers</th>
+    <th>TotalScore</th>
+  </tr>
+  </thead>
+
+
+  <tbody>
+    <tr *ngFor="let result of highScores; let i = index">
+      <td>{{1 + i}}</td>
+      <td>{{result.nickname}}</td>
+      <td>{{result.numberOfCorrectAnswers}}</td>
+      <td>{{result.totalScore}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
