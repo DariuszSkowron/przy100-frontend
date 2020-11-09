@@ -4,27 +4,32 @@
     <h2 class="header">Completed!</h2>
     <div class="card horizontal">
       <div class="card-image">
-        <img src="../../assets/img/Sentino%20meme.png" style="width: 250px;height : 250px;" alt="sentino">
+        <img src="../../assets/img/seba%20cola.jpg" alt="sentino">
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <h3>{{this.correctAnswerCount}}/2</h3>
-          <span>Congratulations, you have completed the quiz just in : {{this.quizService.totalTime}}</span>
+          <h2>Number of correct answers: {{this.userResult.numberOfCorrectAnswers}}/{{this.finishedQuiz.questionList.length}}</h2>
+          <h2>Time spent: {{this.quizService.totalTime}} seconds</h2>
+          <h2>Your score: {{this.userResult.totalScore}} points</h2>
+
         </div>
+        <div class="score-form">
         <div class="card-content">
           <form #registerForm="ngForm" (ngSubmit)="onSubmit(Name.value)">
             <div class="row">
-              <div class="input-field col s12">
-                <label for="name">Name</label>
+              <div class="input-field">
                 <input id="name" type="text" name="Name" #Name ngModel required>
+                <label for="name">Your nickname</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
-                <button type="submit" class="btn" onclick="M.toast({html: 'Score sent'})" [disabled]="!registerForm.valid || this.isDisabled">Submit score</button>
+              <div class="input-field">
+                <button type="submit" class="btn" onclick="M.toast({html: 'Score sent'})" [disabled]="!registerForm.valid || this.isDisabled">
+                  <span *ngIf="this.isDisabled == true" >Score is too low</span><span *ngIf="this.isDisabled == false">Submit score</span></button>
               </div>
             </div>
           </form>
+        </div>
         </div>
       </div>
       <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="quizRepeat()">

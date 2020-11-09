@@ -1,3 +1,58 @@
 .header{
   text-align: center;
 }
+
+.card-image{
+  padding-top: 20px;
+  img{
+    border-radius: 20px;
+    max-width: 200px;
+    display:flex;
+    justify-content: center;
+  }
+}
+
+.card{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.btn{
+  width: 250px;
+}
+
+.score-form {
+  //margin: 0;
+  //padding: 0;
+  //display: inline-block;
+  //align-items: center;
+  text-align: center;
+
+  form{
+    display: inline-block;
+  }
+
+
+  .input-field {
+    ////margin: 0;
+    //align-items: center;
+    //display: block;
+    //
+    width: 250px;
+
+}
+
+  label{
+    //display: block;
+    text-align: center;
+    //line-height: 150%;
+    //font-size: .85em;
+    width: 250px;
+  }
+}
+
+//h2{
+//  text-align: center;
+//}

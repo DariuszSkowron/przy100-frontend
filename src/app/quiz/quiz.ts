@@ -6,5 +6,5 @@ export class Quiz {
   endTime: Date;
   score: string;
   questionList: Question[];
-  userAnswers: string[];
+  userAnswers: any[];
 }

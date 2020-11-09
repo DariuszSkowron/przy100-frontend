@@ -47,8 +47,12 @@
 //
 //}
 //
-html, body { height: 100%; }
+html, body { height: 100%; margin: 0}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//main{
+//  background: #a56d3b;
+//}
 
 input.ng-invalid.ng-dirty{
   border-bottom-color : rgba(76, 22, 55, 0.07) !important;
@@ -69,3 +73,6 @@ ul li.selected{
   background-color: #26a69a !important;
   color: #eafaf9 !important;
 }
+
+//html, body { height: 100%; }
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

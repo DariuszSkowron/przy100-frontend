@@ -1,115 +1,53 @@
-//*{
-//  margin: 0;
-//  padding: 0;
-//}
-//.header{
-//  height: 70px;
-//  background: #34495e;
-//  padding: 0 20px;
-//  color: #fff;
-//}
-//.logo{
-//  line-height: 70px;
-//  float: left;
-//  text-transform: uppercase;
-//  font-size: 20px;
-//}
-//
-//.menu{
-//  float: right;
-//  line-height: 70px;
-//}
-//.menu a{
-//  color: #fff;
-//  text-transform: uppercase;
-//  text-decoration: none;
-//  padding: 0 10px;
-//  transition: 0.4s;
-//}
-//.show-menu-btn,.hide-menu-btn{
-//  transition: 0.4s;
-//  font-size: 30px;
-//  cursor: pointer;
-//  display: none;
-//}
-//.show-menu-btn{
-//  float: right;
-//}
-//.show-menu-btn i{
-//  line-height: 100px;
-//}
-//.menu a:hover,
-//.show-menu-btn:hover,
-//.hide-menu-btn:hover{
-//  color: #3498db;
-//}
-//
-//#chk{
-//  position: absolute;
-//  visibility: hidden;
-//  z-index: -1111;
-//}
-//
-//.content{
-//  padding: 0 20px;
-//}
-//.content img{
-//  width: 100%;
-//  max-width: 700px;
-//  margin: 20px 0;
-//}
-//.content p{
-//  text-align: justify;
-//}
-//
-//@media screen and (max-width:800px) {
-//  .show-menu-btn,.hide-menu-btn{
-//    display: block;
-//  }
-//  .menu{
-//    position: fixed;
-//    width: 100%;
-//    height: 100vh;
-//    background: #333;
-//    right: -100%;
-//    top: 0;
-//    text-align: center;
-//    padding: 80px 0;
-//    line-height: normal;
-//    transition: 0.7s;
-//  }
-//  .menu a{
-//    display: block;
-//    padding: 20px;
-//  }
-//  .hide-menu-btn{
-//    position: absolute;
-//    top: 40px;
-//    right: 40px;
-//  }
-//  #chk:checked ~ .menu{
-//    right: 0;
-//  }
-//}
 
-
-a:link {
-  text-decoration: none;
+.hamburger-menu{
+  right: 30px;
+  position: absolute;
 }
 
-a:visited {
-  text-decoration: none;
+.brand-logo{
+  //max-width: 10%;
+  width: 70px;
+  height: auto;
 }
 
-a:hover {
+mat-toolbar{
+  background-color: rgba(0, 0, 0, 0.73);
+  height: 90px;
+  border-bottom: 5px solid #26a69a;
+  //position: fixed;
+  top: 0;
+  overflow: hidden;
+  -webkit-box-shadow: 0 4px 6px -4px #222;
+  -moz-box-shadow: 0 4px 6px -4px #222;
+  box-shadow: 0 4px 6px -4px #222;
+}
+
+a {
   text-decoration: none;
   color: white;
 }
 
-a:active {
-  text-decoration: none;
+
+a:hover, a:active {
+  color: lightgray;
 }
 
-nav{
-  background-color: #ff0240;
+.navigation-items{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+
 }
+
+mat-toolbar{
+  //border-radius: 3px;
+}
+
+@media(max-width: 959px){
+  mat-toolbar {
+    border-radius: 0px;
+
+  }
+}
+

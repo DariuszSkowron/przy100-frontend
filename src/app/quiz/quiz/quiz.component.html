@@ -1,33 +1,34 @@
-<div class="row" *ngIf="quiz && this.quizService.quizProgress != 2">
+<div class="row" *ngIf="quiz && this.quizService.quizProgress != this.quiz.questionList.length">
   <div class="container">
     <span>Time Elapsed : {{this.quizService.displayTimeElapsed()}}</span>
     <div class="progress">
-      <div class="determinate" [style.width.%]="(this.quizService.quizProgress+1)*50"></div>
+      <div class="determinate" [style.width.%]="(this.quizService.quizProgress+1)*(100/this.quiz.questionList.length)"></div>
     </div>
-    <div class="card blue-grey darken-1">
+    <div class="card grey darken-1">
       <div class="card-content white-text">
-        <span class="card-title">{{this.quizService.quizProgress+1}}</span>
+        <span class="card-title">Question {{this.quizService.quizProgress+1}} / {{this.quiz.questionList.length}}</span>
         <p>{{quiz.questionList[this.quizService.quizProgress].description}}</p>
+        <div *ngIf="quiz.questionList[this.quizService.quizProgress].correctSongUrl != null">
+          <audio #player id="audio{{quiz.questionList[this.quizService.quizProgress].correctSongUrl}}" src="{{quiz.questionList[this.quizService.quizProgress].correctSongUrl}}" preload="auto">
+            <p>Sorry, your browser does not support the <code>audio</code> element.</p>
+          </audio>
+          <div class="test">
+          <button #button (click)="playSong(player)" [disabled]="!songListenAvailable" class="btn waves-effect waves-light" type="submit" name="action">
+            <span class="listen-icon"><mat-icon>volume_up</mat-icon><span> Play ({{timeLeft}} seconds)</span></span>
+          </button>
+          </div>
+        </div>
 
       </div>
       <div class="card-action">
         <ul class="collection answer">
         <ng-container *ngFor="let answer of quiz.questionList[this.quizService.quizProgress].answersList">
-          <li *ngIf="answer != null" class="collection-item" (click)="Answer(quiz.questionList[this.quizService.quizProgress].id, answer)">
+          <li *ngIf="answer != null" class="collection-item" (click)="Answer(answer)">
             {{answer}}
           </li>
         </ng-container>
         </ul>
       </div>
     </div>
-    <div *ngIf="quiz.questionList[this.quizService.quizProgress].correctSongUrl != null">
-    <audio #player id="audio{{quiz.questionList[this.quizService.quizProgress].correctSongUrl}}" src="{{quiz.questionList[this.quizService.quizProgress].correctSongUrl}}" preload="auto">
-      <p>Sorry, your browser does not support the <code>audio</code> element.</p>
-    </audio>
-    <button #button (click)="playSong(player)" [disabled]="!kupa" class="btn waves-effect waves-light" type="submit" name="action">
-<!--    Play ({{countdown}} seconds)-->
-    Play ({{timeLeft}} seconds)
-  </button>
     </div>
   </div>
-</div>

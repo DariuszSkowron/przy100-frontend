@@ -1,9 +1,9 @@
 export class Result {
 
-  id : number;
+  id: number;
   timeSpent: number;
-  numberOfCorrectAnswers : number;
-  nickname : string;
-  totalScore : number;
+  numberOfCorrectAnswers: number;
+  nickname: string;
+  totalScore: number;
 
 }
