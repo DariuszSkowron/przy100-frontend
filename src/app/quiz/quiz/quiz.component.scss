@@ -5,7 +5,7 @@ ul {
 }
 
 
-@media(max-width: 959px) {
+@media(max-width: 1050px) {
   ul {
     columns: 1;
     -webkit-columns: 1;
@@ -14,7 +14,7 @@ ul {
 
   .collection-item{
     //max-width: 50px;
-    min-width: 150px;
+    min-width: 200px !important;
   }
 }
 
@@ -28,7 +28,7 @@ ul {
   margin-bottom: 20px;
   border-radius: 5px;
   border: none;
-  width: 300px;
+  min-width: 350px;
   display: flex;
   justify-content: center;
 }
@@ -60,3 +60,4 @@ ul {
 card{
   background-color: red;
 }
+

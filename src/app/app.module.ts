@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ResultComponent,
     HighscoresComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

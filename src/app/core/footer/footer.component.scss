@@ -2,12 +2,22 @@ $line-height: 40px;
 
 footer {
   position: fixed;
-  left: 0;
-  right: 0;
+  width: 100%;
+  margin-bottom: 0;
   bottom: 0;
-  //align-items: center;
-  //display: block;
   height: $line-height;
   line-height: $line-height;
-  background: rgba((lighten(grey, 10)), 0.6);
+  background: rgba((lighten(grey, 10)), 0.2);
+  z-index: 5;
+  //position: relative;
+  //height: 200px;
+
+
+  //border-top: 1px solid red ;
+  //position: fixed;
+  //top: 0;
+  //overflow: hidden;
+  -webkit-box-shadow: 0 4px 6px -4px #222;
+  -moz-box-shadow: 0 4px 6px -4px #222;
+  box-shadow: 0 4px 6px 4px #222;
 }

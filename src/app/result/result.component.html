@@ -8,14 +8,15 @@
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <h2>Number of correct answers: {{this.userResult.numberOfCorrectAnswers}}/{{this.finishedQuiz.questionList.length}}</h2>
-          <h2>Time spent: {{this.quizService.totalTime}} seconds</h2>
+          <h2>Correctorrect answers: {{this.userResult.numberOfCorrectAnswers}}/{{this.finishedQuiz.questionList.length}}</h2>
+          <h2>Time spent: {{this.userResult.timeSpent}} seconds</h2>
           <h2>Your score: {{this.userResult.totalScore}} points</h2>
-
+<!--          <h2>Able to submit: {{this.isAbleToSubmit}}</h2>-->
+<!--          <h2>Able to submit: {{this.isDisabled}}</h2>-->
         </div>
         <div class="score-form">
         <div class="card-content">
-          <form #registerForm="ngForm" (ngSubmit)="onSubmit(Name.value)">
+          <form #registerForm="ngForm" (ngSubmit)="onSubmit(Name.value)" autocomplete="off">
             <div class="row">
               <div class="input-field">
                 <input id="name" type="text" name="Name" #Name ngModel required>
@@ -24,8 +25,11 @@
             </div>
             <div class="row">
               <div class="input-field">
-                <button type="submit" class="btn" onclick="M.toast({html: 'Score sent'})" [disabled]="!registerForm.valid || this.isDisabled">
-                  <span *ngIf="this.isDisabled == true" >Score is too low</span><span *ngIf="this.isDisabled == false">Submit score</span></button>
+                <button type="submit" class="btn" onclick="M.toast({html: 'Score sent'})" [disabled]="!registerForm.valid || this.isDisabled || this.isAbleToSubmit == false">
+                  <span *ngIf="this.isAbleToSubmit == false" >Score is too low</span>
+                  <span *ngIf="this.isDisabled == false && this.isAbleToSubmit == true">Submit score</span>
+                  <span *ngIf="this.isDisabled == true && this.isAbleToSubmit == true">Score already submitted</span>
+                </button>
               </div>
             </div>
           </form>

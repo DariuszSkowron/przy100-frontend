@@ -22,6 +22,8 @@ export class QuizService {
 
   constructor(private http: HttpClient) {
   }
+
+
   displayTimeElapsed() {
     const minutes: number = Math.floor(this.seconds / 60);
     const seconds: number = Math.floor(this.seconds % 60);
@@ -30,7 +32,7 @@ export class QuizService {
       return '0' + minutes + ' : 0' + (seconds);
     }
     if (minutes > 10 && seconds > 10) {
-      return '0' + minutes + ' : ' + (seconds);
+      return '0' + ' : ' + minutes + ' : ' + (seconds);
     }
     if (minutes > 10 && seconds < 10) {
       return minutes + ' : 0' + (seconds);
@@ -60,8 +62,8 @@ export class QuizService {
     return this.http.get<Result[]>(`${this.QUIZ_URL}` + '/highscores');
     }
 
-    checkIfScoreIsHigh(): Observable<number> {
-    return this.http.get<number>(`${this.QUIZ_URL}` + '/isHighScore');
+    checkIfScoreIsHigh(userResult: Result): Observable<any> {
+    return this.http.post(`${this.QUIZ_URL}` + '/isHighScore', userResult);
     }
 
 

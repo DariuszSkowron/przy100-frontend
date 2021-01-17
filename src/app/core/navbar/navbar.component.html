@@ -1,3 +1,4 @@
+
 <mat-toolbar>
   <div fxHide.gt-xs class="hamburger-menu">
     <button mat-icon-button (click)="onToggleSidenav()">
@@ -5,7 +6,7 @@
     </button>
   </div>
   <div>
-    <a href="#!"><img class="brand-logo" src="../../assets/img/PRZY1000.png" alt="sentino"></a>
+    <a [routerLink]="'main-page'"><img class="brand-logo" src="../../assets/img/PRZY1000.png" alt="sentino"></a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
@@ -19,3 +20,4 @@
     </ul>
   </div>
 </mat-toolbar>
+

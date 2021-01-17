@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {QuizService} from '../../shared/quiz.service';
 import {Quiz} from '../quiz';
 import {Router} from '@angular/router';
+import {UserAnswer} from '../user-answer';
 
 @Component({
   selector: 'app-quiz',
@@ -14,22 +15,31 @@ export class QuizComponent implements OnInit {
   songListenAvailable = true;
   timeLeft = 5;
   interval;
+  userAnswer: UserAnswer;
+  userAnswers: UserAnswer[] = [];
 
   constructor(private router: Router, public quizService: QuizService) {
 
   }
 
   ngOnInit() {
-    if (Number(localStorage.getItem('seconds')) > 0) {
-      this.quizService.seconds = Number(localStorage.getItem('seconds'));
-      this.quizService.quizProgress = Number((localStorage.getItem('quizProgress')));
-      this.quiz = JSON.parse(localStorage.getItem('quiz'));
-      if (this.quizService.quizProgress === this.quiz.questionList.length) {
+    this.quiz = JSON.parse(localStorage.getItem('quiz'));
+    // this.quizService.seconds = JSON.parse(localStorage.getItem('seconds'))
+    // this.quizService.timer = localStorage.getItem('timer');
+    this.quizService.quizProgress = Number((localStorage.getItem('quizProgress')));
+
+    if (Number(localStorage.getItem('quiz') != null) && this.quizService.quizProgress === this.quiz.questionList.length ) {
+      // this.quizService.seconds = Number(localStorage.getItem('seconds'));
+      // this.quizService.quizProgress = Number((localStorage.getItem('quizProgress')));
+      // this.quizService.questionList = JSON.parse(localStorage.getItem('questionList'));
+      // this.quiz = JSON.parse(localStorage.getItem('quiz'));
+      // if (this.quizService.quizProgress === this.quiz.questionList.length) {
         this.router.navigate(['/result']);
-      }
+      // }
     } else {
       this.quizService.seconds = 0;
       this.quizService.quizProgress = 0;
+      clearTimeout(this.quizService.timer);
       this.getQuiz();
     }
   }
@@ -53,18 +63,30 @@ export class QuizComponent implements OnInit {
       this.quizService.seconds++;
       localStorage.setItem('seconds', this.quizService.seconds.toString());
     }, 1000);
+    localStorage.setItem('timer', this.quizService.timer);
   }
 
 
   Answer(selectedAnswer) {
-    this.quiz.questionList[this.quizService.quizProgress].userAnswer = selectedAnswer;
+    this.userAnswer = {
+      questionId: this.quiz.questionList[this.quizService.quizProgress].id,
+      answer: selectedAnswer,
+      answerTime: new Date()
+    };
+    this.userAnswers[this.quizService.quizProgress] = this.userAnswer;
+    // this.quiz.userAnswers[this.quizService.quizProgress] = this.userAnswer;
+    // this.quiz.userAnswers[this.quizService.quizProgress].answerTime = new Date();
+    // this.quiz.userAnswers[this.quizService.quizProgress].questionId = this.quiz.questionList[this.quizService.quizProgress].id;
     localStorage.setItem('questionList', JSON.stringify(this.quizService.questionList));
+    localStorage.setItem('quiz', JSON.stringify(this.quiz));
     this.quizService.quizProgress++;
     this.songListenAvailable = true;
     this.pauseButtonTimer();
     this.timeLeft = 5;
     localStorage.setItem('quizProgress', this.quizService.quizProgress.toString());
     if (this.quizService.quizProgress === this.quiz.questionList.length) {
+      this.quiz.userAnswers = this.userAnswers;
+      localStorage.setItem('quiz', JSON.stringify(this.quiz));
       clearTimeout(this.quizService.timer);
       this.quizService.totalTime = (new Date().getTime() - new Date(this.quizService.startTime).getTime()) / 1000;
       localStorage.setItem('totalTime', this.quizService.totalTime.toString());

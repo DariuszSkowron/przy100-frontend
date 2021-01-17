@@ -1,10 +1,9 @@
-import {Question} from "./question";
+import {Question} from './question';
+import {UserAnswer} from './user-answer';
 
 export class Quiz {
   id: string;
   startTime: Date;
-  endTime: Date;
-  score: string;
   questionList: Question[];
-  userAnswers: any[];
+  userAnswers: UserAnswer[];
 }

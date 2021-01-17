@@ -36,23 +36,48 @@
 
 
   .input-field {
-    ////margin: 0;
-    //align-items: center;
+    margin: 0;
+    align-items: center;
+    transition: none;
     //display: block;
     //
     width: 250px;
 
-}
 
-  label{
+
+}
+  //.input-field.active  label {
+  //  transform: translate(40px, 5px) scale(.75);
+  //}
+
+  .input-field input[type=text]:focus + label {
+    //color: red;
+    transform: translate(0px, 5px) scale(.75);
+
+  }
+
+  //.input-field .prefix.active {
+  //  color: red;
+  //}
+
+  .input-field label{
     //display: block;
     text-align: center;
     //line-height: 150%;
     //font-size: .85em;
     width: 250px;
+    transform-origin: top;
+    //transform: translate(0, 16px) scale(1);
+    //transition: all .1s ease-in-out;
   }
+
 }
 
-//h2{
-//  text-align: center;
-//}
+@media(max-width: 700px) {
+.card-image{
+
+  img{
+  max-width: 150px !important;
+  }
+}
+}
