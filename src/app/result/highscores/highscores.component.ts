@@ -23,10 +23,18 @@ export class HighscoresComponent implements OnInit {
     this.quizService.getHighScores().subscribe(
       res => {
         this.highScores = res;
-        this.highScores.sort((a, b) => a.totalScore > b.totalScore ? -1 : 1);
+        this.highScores.sort(function(a, b){
+          if(a.numberOfCorrectAnswers == b.numberOfCorrectAnswers){
+            return (a.timeSpent < b.timeSpent)? -1 : (a.timeSpent > b.timeSpent) ? 1 : 0;
+          }else{
+            return (a.numberOfCorrectAnswers > b.numberOfCorrectAnswers) ? -1 : 1;
+          }
+
+        });
+
       }
     );
   }
 
-
+  // a.numberOfCorrectAnswers > b.numberOfCorrectAnswers ? -1 : (a.timeSpent > b.timeSpent) ? 1 : -1);
 }
